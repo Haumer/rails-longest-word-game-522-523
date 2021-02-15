@@ -1,0 +1,38 @@
+<h1>These are the Letters:</h1>
+
+<div class="letter-grid">
+  <% @letters.each do |letter| %>
+    <div class="letter">
+      <%= letter %>
+    </div>
+  <% end %>
+</div>
+
+<br>
+<br>
+<br>
+
+<form action="/score" method="post">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= hidden_field_tag :letters, @letters %>
+  <label for="word"></label>
+  <input type="text" name="word" placeholder="Did you find a word?">
+  <input type="submit">
+</form>
+
+<style>
+  .letter {
+    margin: 4px;
+    background-color: #FE5F00;
+    color: white;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .letter-grid {
+    display: flex
+  }
+</style>
